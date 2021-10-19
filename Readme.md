@@ -18,7 +18,7 @@ $ composer install
 ```
 
 ## Test
-Navigate to the demo webform to enter some parameter. Submit the Form to HTML-preview or to convert to PDF.
+Navigate to the demo webform at http://localhost/demotpl/urkunde/demo.html to enter some parameter. Submit the Form to HTML-preview or to convert to PDF.
 
 ![form](urkunde/doc/form.png)
 
