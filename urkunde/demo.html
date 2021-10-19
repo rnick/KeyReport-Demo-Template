@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Demo headles chromium pdf generator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="vendor/components/jquery/jquery.min.js"></script>
+    <script src="vendor/twbs/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("p").click(function() {
+                $(this).hide();
+            });
+        });
+
+        function runPdf() {
+            var name = $('#txt_name').val();
+            var datum = $('#txt_date').val();
+            var jahre = $('#jahre option:selected').val();
+            var anrede = $('#sel_salutation option:selected').val();
+            var signatur = $('#txt_signature').val();
+
+            var wsurl = "http://localhost/KeyReport/urkunde.php" + "?name=" + name + '&jahre=' + jahre + '&anrede=' + anrede + '&datum=' + datum + '&signatur=' + signatur;
+
+            window.open(wsurl, '_blank');
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="http://localhost/demotpl/urkunde/tpl.php" target="_blank" method="get" id="report">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Create PDF by headless chrome and PHP Webservice - Demo</h2>
+                            This demo uses a html template, headless chrome and a PHP Webservice to create a PDF-file.
+
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="txt_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="txt_name" name="name" placeholder="Theo Tester" value="Theo Tester">
+                            </div>
+                            <div class="mb-3">
+                                <label for="txt_salutation" class="form-label">Anrede</label>
+                                <select class="form-select" aria-label="Default select example" name="anrede" id="sel_salutation">
+                                <option selected>- Anrede auswählen -</option>
+                                <option value="Herr">Herr</option>
+                                <option value="Frau">Frau</option>
+                                
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="txt_membership" class="form-label">Mitgliedschaft</label>
+                                <select class="form-select" aria-label="Default select example" name="jahre" id="jahre">
+                                <option selected>- Jahre Mitgliedschaft auswählen -</option>
+                                <option value="25">25 Jahre</option>
+                                <option value="40">40 Jahre</option>
+                                <option value="50">50 Jahre</option>
+                                <option value="60">60 Jahre</option>
+                                <option value="65">65 Jahre</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="txt_signature" class="form-label">Unterzeichner</label>
+                                <input type="text" class="form-control" id="txt_signature" name="signatur" value="Volker Vorsitz">
+                            </div>
+                            <div class="mb-3">
+                                <label for="txt_date" class="form-label">Date</label>
+                                <input type="text" class="form-control" id="txt_date" value="21.10.2021" name="datum">
+                            </div>
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary mb-3">Submit to HTML</button>
+                                <button type="button" class="btn btn-primary mb-3" onclick="runPdf();">Submit to PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3">Demo and webservice by Ralf Nickel, <a href="https://www.ralf-nickel.de">www.ralf-nickel.de</a></div>
+                <div class="mb-3">Webservice project on Github, <a href="https://github.com/rnick">https://github.com/rnick</a>, using <a href="https://github.com/chrome-php/chrome" target="_blank">chrome-php</a>.
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
